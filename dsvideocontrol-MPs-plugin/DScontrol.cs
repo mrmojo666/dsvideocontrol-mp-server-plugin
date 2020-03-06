@@ -13,7 +13,7 @@ using TvEngine.Events;
 using TvLibrary;
 using TvEngine;
 
-namespace DScontrolPlugin
+namespace DSControl_Plugin
 {
     public class Dscontrol : ITvServerPlugin
     {
@@ -72,7 +72,7 @@ namespace DScontrolPlugin
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="eventArgs">The <see cref="System.EventArgs"/> the event data.</param>
-        void events_OnTvServerEvent(object sender, EventArgs eventArgs)
+        public void events_OnTvServerEvent(object sender, EventArgs eventArgs)
         {
             TvServerEventArgs tvEvent = (TvServerEventArgs)eventArgs;
             switch (tvEvent.EventType)
@@ -94,8 +94,10 @@ namespace DScontrolPlugin
                     break;
                 ////Timeshift started
                 case TvServerEventType.EndTimeShifting:
-
-                    break;
+                    {
+                        bool result =  DSControl_Utils.Utils.           Utils.RunWebCameraConfig();
+                        break;
+                    }
             }
 
         }
