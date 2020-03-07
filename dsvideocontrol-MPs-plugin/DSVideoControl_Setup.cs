@@ -33,7 +33,7 @@ namespace SetupTv.Sections
         {
             Log.Info("DScontrol: Configuration deactivated");
 
-            pathtoexe.Text = DSControl.ToolDirectory;
+            DSControl.ToolDirectory = TextBoxpathtoexe.Text ;
             DSControl.SaveSettings();
             base.OnSectionDeActivated();
         }
@@ -43,25 +43,32 @@ namespace SetupTv.Sections
             Log.Info("DScontrol: Configuration activated");
 
             DSControl.LoadSettings();
-            pathtoexe.Text = DSControl.ToolDirectory;
+            TextBoxpathtoexe.Text = DSControl.ToolDirectory;
 
 
             base.OnSectionActivated();
         }
 
         #endregion SetupTv.SectionSettings
+        public void ChooseFolder()
+        {
+            if (folderBrowserTool.ShowDialog() == DialogResult.OK)
+            {
+                TextBoxpathtoexe.Text = folderBrowserTool.SelectedPath;
+            }
+        }
 
-        
 
         private void browsebutton_Click(object sender, EventArgs e)
         {
-           folderBrowserTool.ShowDialog();
+            ChooseFolder();
         }
 
         private void folderBrowserTool_HelpRequest(object sender, EventArgs e)
         {
-            pathtoexe.Text = folderBrowserTool.SelectedPath;
-
+            
         }
+
+        
     }
 }

@@ -116,7 +116,7 @@ namespace TvEngine
                 ////Timeshift started
                 case TvServerEventType.StartTimeShifting:
                     Log.Debug("DScontrol: Plugin is setting up video controls........");
-                    _WCC.RunWebCameraConfig(DSControl.ToolDirectory);
+                    _WCC.RunWebCameraConfig(ToolDirectory);
                     Log.Debug("DScontrol: Plugin setup video controls done!");
                     break;
                     
@@ -138,7 +138,7 @@ namespace TvEngine
             try
             {
                 TvBusinessLayer layer = new TvBusinessLayer();
-                _tooldirectory = layer.GetSetting("DSControl_ToolDirectory").Value;
+                _tooldirectory = Convert.ToString(layer.GetSetting("DSControl_ToolDirectory", ToolDirectory).Value);
                 
             }
             catch (Exception ex)
