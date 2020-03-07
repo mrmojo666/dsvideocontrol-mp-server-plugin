@@ -54,7 +54,7 @@ namespace SetupTv.Sections
         {
             if (folderBrowserTool.ShowDialog() == DialogResult.OK)
             {
-                TextBoxpathtoexe.Text = folderBrowserTool.SelectedPath;
+                TextBoxpathtoexe.Text = folderBrowserTool.SelectedPath + "\\";
             }
         }
 
